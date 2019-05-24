@@ -14,18 +14,21 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.stage.Stage;
 
-public class Adventure extends Application {
+public class Horror extends Application {
 	public void start(final Stage window) throws Exception {
-		AnchorPane paneAdventure = new AnchorPane();
-		paneAdventure.setPrefSize(796, 530);
+		AnchorPane paneHorror = new AnchorPane();
+		paneHorror.setPrefSize(709, 496);
 		window.setResizable(false);
-
+		
 		Button buttonComeBack = new Button(String.buttonComeBack);
 		buttonComeBack.setLayoutX(10);
 		buttonComeBack.setLayoutY(10);
 		buttonComeBack.setPrefWidth(90);
-		paneAdventure.getChildren().addAll(buttonComeBack);
-		buttonComeBack.setOnAction(new EventHandler<ActionEvent>() {
+		paneHorror.getChildren().addAll(buttonComeBack);
+		
+		
+		
+buttonComeBack.setOnAction(new EventHandler<ActionEvent>() {
 			
 			public void handle(ActionEvent event) {
 				try {
@@ -42,16 +45,18 @@ public class Adventure extends Application {
 					window.close();
 			}
 		});
-
+		
 		BackgroundImage ImagemTelaBusca = new BackgroundImage(
-				new Image("https://i.imgur.com/1cSfgHB.jpg",830, 550,
-						false, true),
+				new Image("https://i.imgur.com/lWSblge.jpg", 722,
+						530, false, true),
 				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
 				BackgroundSize.DEFAULT);
-		paneAdventure.setBackground(new Background(ImagemTelaBusca));
+		paneHorror.setBackground(new Background(ImagemTelaBusca));
 
-		Scene sceneAdventury = new Scene(paneAdventure);
-		window.setScene(sceneAdventury);
+		Scene sceneHorror = new Scene(paneHorror);
+		window.setScene(sceneHorror);
 		window.show();
 	}
+
+	
 }

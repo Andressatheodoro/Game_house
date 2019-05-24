@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -43,7 +44,7 @@ public class Main extends Application {
 		user.setLayoutY(150);
 		user.setPrefWidth(140);
 
-		final TextField passWord = new TextField();
+		final PasswordField passWord = new PasswordField();
 		passWord.setLayoutX(500);
 		passWord.setLayoutY(185);
 		passWord.setPrefWidth(140);
@@ -57,7 +58,9 @@ public class Main extends Application {
 		buttonEnter.setPrefWidth(60);
 
 		pane.getChildren().addAll(buttonEnter, passWord, user);
+		
 		buttonEnter.setOnAction(new EventHandler<ActionEvent>() {
+			
 			public void handle(ActionEvent event) {
 				try {
 					errorLogin();
@@ -78,7 +81,7 @@ public class Main extends Application {
 		});
 
 		BackgroundImage ImagemLogin = new BackgroundImage(
-				new Image("http://www.microcampabc.com.br/wp-content/uploads/2017/08/games.jpg", 820, 370, false, true),
+				new Image("https://i.imgur.com/PmlQNyZ.png", 0, 0, false, true),
 				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
 				BackgroundSize.DEFAULT);
 		pane.setBackground(new Background(ImagemLogin));
@@ -86,3 +89,4 @@ public class Main extends Application {
 	}
 
 }
+// #ff7c00

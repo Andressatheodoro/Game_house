@@ -2,9 +2,14 @@ package andressa.ifsc.Game_house;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
+
 import javafx.stage.Stage;
 
 public class ErrorLogin extends Application {
@@ -15,20 +20,11 @@ public class ErrorLogin extends Application {
 
 		Scene sceneErroLogin = new Scene(paneErroLogin);
 		primaryStage.setScene(sceneErroLogin);
-		Text textError2 = new Text();
-		
-		textError2.setLayoutX(65);
-		textError2.setLayoutY(30);
-		textError2.setFont(new Font(25));
-		textError2.setText("Error");
-		
-		Text textError = new Text();
-		textError.setText("invalid information");
-		textError.setLayoutX(50);
-		textError.setLayoutY(50);
-		textError.setFont(new Font(20));
-		
-		paneErroLogin.getChildren().addAll(textError,textError2);
+
+		BackgroundImage ImagemTelaBusca = new BackgroundImage(
+				new Image("https://i.imgur.com/R5vTHpr.png", 0, 0, false, true), BackgroundRepeat.NO_REPEAT,
+				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+		paneErroLogin.setBackground(new Background(ImagemTelaBusca));
 
 		primaryStage.show();
 

@@ -20,32 +20,33 @@ import javafx.stage.Stage;
 public class SearchGame extends Application {
 
 	public void start(final Stage window) throws Exception {
-		AnchorPane pane2 = new AnchorPane();
-		pane2.setPrefSize(720, 360);
 
+		AnchorPane paneSearchGame = new AnchorPane();
+		paneSearchGame.setPrefSize(720, 360);
+		window.setResizable(false);
 		Text text1 = new Text();
 		text1.setText("Opitions");
 		text1.setLayoutX(150);
 		text1.setLayoutY(140);
 		text1.setFill(Color.WHITE);
 		BackgroundImage ImagemTelaBusca = new BackgroundImage(
-				new Image("https://png.pngtree.com/back_origin_pic/00/01/71/a946bf083ce8abe5a1e4507c46bfc028.jpg", 820,
+				new Image("https://png.pngtree.com/back_origin_pic/00/01/71/a946bf083ce8abe5a1e4507c46bfc028.jpg", 0,
 						370, false, true),
 				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
 				BackgroundSize.DEFAULT);
-		pane2.setBackground(new Background(ImagemTelaBusca));
+		paneSearchGame.setBackground(new Background(ImagemTelaBusca));
 
 		Button buttonSearch = new Button(String.buttonSearch);
 		buttonSearch.setLayoutX(320);
 		buttonSearch.setLayoutY(190);
 		buttonSearch.setPrefWidth(90);
-		pane2.getChildren().addAll(buttonSearch);
+		paneSearchGame.getChildren().addAll(buttonSearch);
 
 		final TextField opitions = new TextField();
 		opitions.setLayoutX(150);
 		opitions.setLayoutY(150);
 		opitions.setPrefWidth(400);
-		pane2.getChildren().addAll(opitions);
+		paneSearchGame.getChildren().addAll(opitions);
 
 		buttonSearch.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
@@ -61,25 +62,34 @@ public class SearchGame extends Application {
 				if (opitions.getText().equals("action")) {
 					window.close();
 					new Action().start(new Stage());
-				}
-				else if (opitions.getText().equals("logic")) {
+				} else if (opitions.getText().equals("horror")) {
 					window.close();
-					new Logic().start(new Stage());
-				}
-				else if (opitions.getText().equals("adventure")) {
+					new Horror().start(new Stage());
+				} else if (opitions.getText().equals("adventure")) {
 					window.close();
 					new Adventure().start(new Stage());
-				}
-				else {
+				} else {
 					new ErrorLogin().start(new Stage());
+				}
+			}
+		});
+		Button buttonHelp = new Button(String.buttonHelp);
+		buttonHelp.setLayoutX(700);
+		buttonHelp.setLayoutY(30);
+		paneSearchGame.getChildren().addAll(buttonHelp);
+		buttonHelp.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				try {
+					new Help().start(window);
+				} catch (Exception e) {
+					//e.printStackTrace();
 				}
 			}
 		});
 
 		Button buttonExit = new Button(String.buttonExit);
-		buttonExit.setLayoutX(650);
-		buttonExit.setLayoutY(20);
-
+		buttonExit.setLayoutX(700);
+		buttonExit.setLayoutY(2);
 		buttonExit.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				try {
@@ -89,8 +99,8 @@ public class SearchGame extends Application {
 				}
 			}
 		});
-		pane2.getChildren().addAll(text1, buttonExit);
-		Scene scene2 = new Scene(pane2);
+		paneSearchGame.getChildren().addAll(text1, buttonExit);
+		Scene scene2 = new Scene(paneSearchGame);
 		window.setScene(scene2);
 		window.show();
 	}
