@@ -22,7 +22,8 @@ public class ErrorLogin extends Application {
 		primaryStage.setScene(sceneErroLogin);
 
 		BackgroundImage ImagemTelaBusca = new BackgroundImage(
-				new Image("https://i.imgur.com/R5vTHpr.png", 0, 0, false, true), BackgroundRepeat.NO_REPEAT,
+				new Image("https://i.imgur.com/TVm5rBn.jpg",300 , 160, false, true), 
+				BackgroundRepeat.NO_REPEAT,
 				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 		paneErroLogin.setBackground(new Background(ImagemTelaBusca));
 

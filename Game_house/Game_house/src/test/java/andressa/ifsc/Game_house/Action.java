@@ -15,36 +15,18 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.stage.Stage;
 
 public class Action extends Application {
+
+
 	public void start(final Stage window) throws Exception {
 		AnchorPane paneAction = new AnchorPane();
 		paneAction.setPrefSize(698, 485);
 		window.setResizable(false);
 
-		
-		
 		Button buttonComeBack = new Button(String.buttonComeBack);
 		buttonComeBack.setLayoutX(10);
 		buttonComeBack.setLayoutY(10);
 		buttonComeBack.setPrefWidth(90);
 		paneAction.getChildren().addAll(buttonComeBack);
-		
-buttonComeBack.setOnAction(new EventHandler<ActionEvent>() {
-			
-			public void handle(ActionEvent event) {
-				try {
-					comeBack();
-				} catch (Exception e) {
-
-					e.printStackTrace();
-				}
-			}
-
-			private void comeBack() throws Exception {
-				
-					new SearchGame().start(new Stage());
-					window.close();
-			}
-		});
 		
 		BackgroundImage ImagemTelaBusca = new BackgroundImage(
 				new Image("https://i.imgur.com/PfrJBbg.jpg",710,
@@ -56,6 +38,22 @@ buttonComeBack.setOnAction(new EventHandler<ActionEvent>() {
         Scene sceneAction = new Scene(paneAction);
 		window.setScene(sceneAction);
 		window.show();
+	
+		
+		buttonComeBack.setOnAction(e -> comeBack(window));
 	}
 
-}
+	
+
+	private void comeBack(Stage stage){
+			
+				try {
+					new SearchGame().start(new Stage());
+					stage.close();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+
+}}

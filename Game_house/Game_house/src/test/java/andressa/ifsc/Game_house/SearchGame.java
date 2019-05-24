@@ -73,19 +73,7 @@ public class SearchGame extends Application {
 				}
 			}
 		});
-		Button buttonHelp = new Button(String.buttonHelp);
-		buttonHelp.setLayoutX(700);
-		buttonHelp.setLayoutY(30);
-		paneSearchGame.getChildren().addAll(buttonHelp);
-		buttonHelp.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent event) {
-				try {
-					new Help().start(window);
-				} catch (Exception e) {
-					//e.printStackTrace();
-				}
-			}
-		});
+		
 
 		Button buttonExit = new Button(String.buttonExit);
 		buttonExit.setLayoutX(700);
@@ -95,7 +83,7 @@ public class SearchGame extends Application {
 				try {
 					new Main().start(window);
 				} catch (Exception e) {
-					e.printStackTrace();
+				
 				}
 			}
 		});
