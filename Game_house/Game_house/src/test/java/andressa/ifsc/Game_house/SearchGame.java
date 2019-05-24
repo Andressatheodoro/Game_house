@@ -24,12 +24,10 @@ public class SearchGame extends Application {
 		AnchorPane paneSearchGame = new AnchorPane();
 		paneSearchGame.setPrefSize(732, 425);
 		window.setResizable(false);
-		
+
 		BackgroundImage ImagemTelaBusca = new BackgroundImage(
-				new Image("https://i.imgur.com/WHWKwmI.jpg",800 ,
-						460, false, true),
-				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
-				BackgroundSize.DEFAULT);
+				new Image("https://i.imgur.com/WHWKwmI.jpg", 800, 460, false, true), BackgroundRepeat.NO_REPEAT,
+				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 		paneSearchGame.setBackground(new Background(ImagemTelaBusca));
 
 		Button buttonSearch = new Button(String.buttonSearch);
@@ -69,7 +67,6 @@ public class SearchGame extends Application {
 				}
 			}
 		});
-		
 
 		Button buttonExit = new Button(String.buttonExit);
 		buttonExit.setLayoutX(700);
@@ -79,11 +76,11 @@ public class SearchGame extends Application {
 				try {
 					new Main().start(window);
 				} catch (Exception e) {
-				
+
 				}
 			}
 		});
-		paneSearchGame.getChildren().add( buttonExit);
+		paneSearchGame.getChildren().add(buttonExit);
 		Scene scene2 = new Scene(paneSearchGame);
 		window.setScene(scene2);
 		window.show();

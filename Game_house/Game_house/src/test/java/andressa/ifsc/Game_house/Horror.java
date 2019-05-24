@@ -19,17 +19,23 @@ public class Horror extends Application {
 		AnchorPane paneHorror = new AnchorPane();
 		paneHorror.setPrefSize(709, 496);
 		window.setResizable(false);
-		
+
+		Button buttonOutLast = new Button(String.buttonCrash);
+		buttonOutLast.setLayoutX(400);
+		buttonOutLast.setLayoutY(294);
+		buttonOutLast.setPrefWidth(90);
+		paneHorror.getChildren().add(buttonOutLast);
+
 		Button buttonComeBack = new Button(String.buttonComeBack);
 		buttonComeBack.setLayoutX(10);
 		buttonComeBack.setLayoutY(10);
 		buttonComeBack.setPrefWidth(90);
 		paneHorror.getChildren().addAll(buttonComeBack);
-		
-		
-		
-buttonComeBack.setOnAction(new EventHandler<ActionEvent>() {
-			
+
+		buttonOutLast.setOnAction(e -> outLast(window));
+
+		buttonComeBack.setOnAction(new EventHandler<ActionEvent>() {
+
 			public void handle(ActionEvent event) {
 				try {
 					comeBack();
@@ -40,17 +46,15 @@ buttonComeBack.setOnAction(new EventHandler<ActionEvent>() {
 			}
 
 			private void comeBack() throws Exception {
-				
-					new SearchGame().start(new Stage());
-					window.close();
+
+				new SearchGame().start(new Stage());
+				window.close();
 			}
 		});
-		
+
 		BackgroundImage ImagemTelaBusca = new BackgroundImage(
-				new Image("https://i.imgur.com/lWSblge.jpg", 722,
-						530, false, true),
-				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
-				BackgroundSize.DEFAULT);
+				new Image("https://i.imgur.com/lWSblge.jpg", 722, 530, false, true), BackgroundRepeat.NO_REPEAT,
+				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 		paneHorror.setBackground(new Background(ImagemTelaBusca));
 
 		Scene sceneHorror = new Scene(paneHorror);
@@ -58,5 +62,15 @@ buttonComeBack.setOnAction(new EventHandler<ActionEvent>() {
 		window.show();
 	}
 
-	
+	private void outLast(Stage stage) {
+		try {
+			new OutLast().start(new Stage());
+			stage.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
 }

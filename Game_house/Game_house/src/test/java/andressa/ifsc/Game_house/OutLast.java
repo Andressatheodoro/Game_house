@@ -14,25 +14,28 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.stage.Stage;
 
-public class Crash extends Application {
+public class OutLast extends Application {
+
+	@Override
 	public void start(Stage window) throws Exception {
-		AnchorPane paneCrash = new AnchorPane();
-		Scene scene = new Scene(paneCrash);
+		AnchorPane paneOutLast = new AnchorPane();
+		Scene scene = new Scene(paneOutLast);
 		window.setScene(scene);
-		paneCrash.setPrefSize(732, 484);
+		paneOutLast.setPrefSize(734, 487);
 		window.setResizable(false);
+
+		BackgroundImage ImagemTelaBusca = new BackgroundImage(
+				new Image("https://i.imgur.com/xMuJ0P6.jpg", 750, 502, false, true), BackgroundRepeat.NO_REPEAT,
+				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+		paneOutLast.setBackground(new Background(ImagemTelaBusca));
 
 		Button buttonComeBack = new Button(String.buttonComeBack);
 		buttonComeBack.setLayoutX(10);
 		buttonComeBack.setLayoutY(10);
 		buttonComeBack.setPrefWidth(90);
 
-		BackgroundImage ImagemTelaBusca = new BackgroundImage(
-				new Image("https://i.imgur.com/Fo8mVc8.jpg", 750, 500, false, true), BackgroundRepeat.NO_REPEAT,
-				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-		paneCrash.setBackground(new Background(ImagemTelaBusca));
+		paneOutLast.getChildren().add(buttonComeBack);
 
-		paneCrash.getChildren().add(buttonComeBack);
 		window.show();
 
 		buttonComeBack.setOnAction(new EventHandler<ActionEvent>() {
@@ -47,7 +50,7 @@ public class Crash extends Application {
 
 			private void comeBack() throws Exception {
 
-				new Adventure().start(new Stage());
+				new Horror().start(new Stage());
 				window.close();
 			}
 		});

@@ -1,4 +1,5 @@
 package andressa.ifsc.Game_house;
+
 import org.kordamp.bootstrapfx.scene.*;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -29,31 +30,29 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		
-		
+
 		window = primaryStage;
 		window.setResizable(false);
 		login();
 		Scene scene = new Scene(pane);
 		window.setScene(scene);
 		window.show();
-		
+
 	}
 
 	public void login() {
 		pane = new AnchorPane();
 		pane.setPrefSize(720, 360);
 		BackgroundImage ImagemLogin = new BackgroundImage(
-				new Image("https://i.imgur.com/PmlQNyZ.png", 0, 0, false, true),
-				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
-				BackgroundSize.DEFAULT);
+				new Image("https://i.imgur.com/PmlQNyZ.png", 0, 0, false, true), BackgroundRepeat.NO_REPEAT,
+				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 		pane.setBackground(new Background(ImagemLogin));
-		
+
 		final TextField user = new TextField();
 		user.setLayoutX(500);
 		user.setLayoutY(150);
 		user.setPrefWidth(140);
-		
+
 		final PasswordField passWord = new PasswordField();
 		passWord.setLayoutX(500);
 		passWord.setLayoutY(185);
@@ -64,13 +63,12 @@ public class Main extends Application {
 		buttonEnter.setLayoutY(220);
 		buttonEnter.setPrefWidth(60);
 		pane.getChildren().addAll(buttonEnter, passWord, user);
-		
+
 		buttonEnter.setOnAction(e -> errorLogin(window, user.getText(), passWord.getText()));
 
-		
-
 	}
-	private void errorLogin(Stage stage, java.lang.String user,java.lang.String passWord){
+
+	private void errorLogin(Stage stage, java.lang.String user, java.lang.String passWord) {
 		if (user.equals("admin") && passWord.equals("admin")) {
 			window.close();
 			try {
