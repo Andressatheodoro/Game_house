@@ -21,13 +21,13 @@ public class Adventure extends Application {
 		AnchorPane paneAdventure = new AnchorPane();
 		paneAdventure.setPrefSize(796, 530);
 		window.setResizable(false);
-				
+
 		Button buttonCrash = new Button(String.buttonCrash);
 		buttonCrash.setLayoutX(100);
-		buttonCrash.setLayoutY(350);
+		buttonCrash.setLayoutY(325);
 		buttonCrash.setPrefWidth(90);
 		paneAdventure.getChildren().add(buttonCrash);
-		
+
 		Button buttonComeBack = new Button(String.buttonComeBack);
 		buttonComeBack.setLayoutX(10);
 		buttonComeBack.setLayoutY(10);
@@ -42,12 +42,11 @@ public class Adventure extends Application {
 		Scene sceneAdventure = new Scene(paneAdventure);
 		window.setScene(sceneAdventure);
 		window.show();
-		
+
 		buttonComeBack.setOnAction(e -> comeBack(window));
 		buttonCrash.setOnAction(e -> crash(window));
 	}
 
-	
 	private void crash(Stage stage) {
 		try {
 			new Crash().start(new Stage());
@@ -58,7 +57,7 @@ public class Adventure extends Application {
 		}
 
 	}
-	
+
 	private void comeBack(Stage stage) {
 
 		try {
@@ -70,5 +69,5 @@ public class Adventure extends Application {
 		}
 
 	}
-	
+
 }

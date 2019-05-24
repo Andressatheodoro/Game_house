@@ -22,6 +22,13 @@ public class Action extends Application {
 		paneAction.setPrefSize(698, 485);
 		window.setResizable(false);
 
+		
+		Button buttonPubg = new Button(String.buttonPubg);
+		buttonPubg.setLayoutX(100);
+		buttonPubg.setLayoutY(100);
+		buttonPubg.setPrefWidth(90);
+		paneAction.getChildren().add(buttonPubg);
+		
 		Button buttonComeBack = new Button(String.buttonComeBack);
 		buttonComeBack.setLayoutX(10);
 		buttonComeBack.setLayoutY(10);
@@ -41,6 +48,7 @@ public class Action extends Application {
 	
 		
 		buttonComeBack.setOnAction(e -> comeBack(window));
+		buttonPubg.setOnAction(e -> pubg(window));
 	}
 
 	
@@ -51,9 +59,18 @@ public class Action extends Application {
 					new SearchGame().start(new Stage());
 					stage.close();
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
-				
+	}
+private void pubg(final Stage stage){
+	
+	try {
+		new Pubg().start(new Stage());
+		stage.close();
+	} catch (Exception e) {
+		
+		e.printStackTrace();
+	}
 
 }}

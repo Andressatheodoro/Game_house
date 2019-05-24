@@ -22,29 +22,25 @@ public class SearchGame extends Application {
 	public void start(final Stage window) throws Exception {
 
 		AnchorPane paneSearchGame = new AnchorPane();
-		paneSearchGame.setPrefSize(720, 360);
+		paneSearchGame.setPrefSize(732, 425);
 		window.setResizable(false);
-		Text text1 = new Text();
-		text1.setText("Opitions");
-		text1.setLayoutX(150);
-		text1.setLayoutY(140);
-		text1.setFill(Color.WHITE);
+		
 		BackgroundImage ImagemTelaBusca = new BackgroundImage(
-				new Image("https://png.pngtree.com/back_origin_pic/00/01/71/a946bf083ce8abe5a1e4507c46bfc028.jpg", 0,
-						370, false, true),
+				new Image("https://i.imgur.com/WHWKwmI.jpg",800 ,
+						460, false, true),
 				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
 				BackgroundSize.DEFAULT);
 		paneSearchGame.setBackground(new Background(ImagemTelaBusca));
 
 		Button buttonSearch = new Button(String.buttonSearch);
-		buttonSearch.setLayoutX(320);
-		buttonSearch.setLayoutY(190);
+		buttonSearch.setLayoutX(460);
+		buttonSearch.setLayoutY(210);
 		buttonSearch.setPrefWidth(90);
 		paneSearchGame.getChildren().addAll(buttonSearch);
 
 		final TextField opitions = new TextField();
-		opitions.setLayoutX(150);
-		opitions.setLayoutY(150);
+		opitions.setLayoutX(220);
+		opitions.setLayoutY(170);
 		opitions.setPrefWidth(400);
 		paneSearchGame.getChildren().addAll(opitions);
 
@@ -87,7 +83,7 @@ public class SearchGame extends Application {
 				}
 			}
 		});
-		paneSearchGame.getChildren().addAll(text1, buttonExit);
+		paneSearchGame.getChildren().add( buttonExit);
 		Scene scene2 = new Scene(paneSearchGame);
 		window.setScene(scene2);
 		window.show();
