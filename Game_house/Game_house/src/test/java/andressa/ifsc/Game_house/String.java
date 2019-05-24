@@ -1,6 +1,5 @@
 package andressa.ifsc.Game_house;
 
-
 public class String {
 
 	public static java.lang.String buttonEnter = "Enter"; 

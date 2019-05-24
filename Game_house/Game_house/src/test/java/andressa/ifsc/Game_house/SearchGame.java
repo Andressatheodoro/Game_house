@@ -1,13 +1,10 @@
 package andressa.ifsc.Game_house;
 
 import javafx.application.Application;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -42,17 +39,42 @@ public class SearchGame extends Application {
 		buttonSearch.setLayoutX(320);
 		buttonSearch.setLayoutY(190);
 		buttonSearch.setPrefWidth(90);
-		
-//		buttonSearch.setStyle("-fx-background-color:#e80004; ");
 		pane2.getChildren().addAll(buttonSearch);
 
-		ChoiceBox opitions = new ChoiceBox(
-				FXCollections.observableArrayList("Adventure", "Action", "Memory", "Logic", "Arcade"));
+		final TextField opitions = new TextField();
 		opitions.setLayoutX(150);
 		opitions.setLayoutY(150);
 		opitions.setPrefWidth(400);
-		
 		pane2.getChildren().addAll(opitions);
+
+		buttonSearch.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				try {
+					buscagenero();
+				} catch (Exception e) {
+
+					e.printStackTrace();
+				}
+			}
+
+			private void buscagenero() throws Exception {
+				if (opitions.getText().equals("action")) {
+					window.close();
+					new Action().start(new Stage());
+				}
+				else if (opitions.getText().equals("logic")) {
+					window.close();
+					new Logic().start(new Stage());
+				}
+				else if (opitions.getText().equals("adventure")) {
+					window.close();
+					new Adventure().start(new Stage());
+				}
+				else {
+					new ErrorLogin().start(new Stage());
+				}
+			}
+		});
 
 		Button buttonExit = new Button(String.buttonExit);
 		buttonExit.setLayoutX(650);
