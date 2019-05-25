@@ -1,13 +1,12 @@
 package andressa.ifsc.Game_house;
 
+import org.kordamp.bootstrapfx.scene.*;
 import javafx.application.Application;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Separator;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -34,58 +33,58 @@ public class Main extends Application {
 
 		window = primaryStage;
 		window.setResizable(false);
-		componentes();
-
+		login();
 		Scene scene = new Scene(pane);
 		window.setScene(scene);
 		window.show();
 
 	}
 
-	public void componentes() {
-
-		pane = new AnchorPane(); // cria tela
-		pane.setPrefSize(720, 360); // dimensão tela
-
-		ChoiceBox cb = new ChoiceBox();
-		cb.setItems(FXCollections.observableArrayList("New Document", "Open ", new Separator(), "Save", "Save as"));
-
-		Button buttonEnter = new Button(String.buttonEnter); // cria botão
-		buttonEnter.setLayoutX(542); // posição horinzontal
-		buttonEnter.setLayoutY(220); // posição vertical
-		buttonEnter.setPrefWidth(60); // tamanho
-
+	public void login() {
+		pane = new AnchorPane();
+		pane.setPrefSize(720, 360);
 		BackgroundImage ImagemLogin = new BackgroundImage(
-				new Image("http://www.microcampabc.com.br/wp-content/uploads/2017/08/games.jpg", 820, 370, false, true),
-				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
-				BackgroundSize.DEFAULT);
+				new Image("https://i.imgur.com/PmlQNyZ.png", 0, 0, false, true), BackgroundRepeat.NO_REPEAT,
+				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 		pane.setBackground(new Background(ImagemLogin));
-		buttonEnter.setOnAction(new EventHandler<ActionEvent>() {
 
-			public void handle(ActionEvent event) {
+		final TextField user = new TextField();
+		user.setLayoutX(500);
+		user.setLayoutY(150);
+		user.setPrefWidth(140);
 
-				try {
-					new SearchGame().start(window);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+		final PasswordField passWord = new PasswordField();
+		passWord.setLayoutX(500);
+		passWord.setLayoutY(185);
+		passWord.setPrefWidth(140);
 
+		Button buttonEnter = new Button(String.buttonEnter);
+		buttonEnter.setLayoutX(542);
+		buttonEnter.setLayoutY(220);
+		buttonEnter.setPrefWidth(60);
+		pane.getChildren().addAll(buttonEnter, passWord, user);
+
+		buttonEnter.setOnAction(e -> errorLogin(window, user.getText(), passWord.getText()));
+
+	}
+
+	private void errorLogin(Stage stage, java.lang.String user, java.lang.String passWord) {
+		if (user.equals("admin") && passWord.equals("admin")) {
+			window.close();
+			try {
+				new SearchGame().start(new Stage());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-
-		});
-
-		TextField usuario = new TextField();
-		usuario.setLayoutX(500);
-		usuario.setLayoutY(150);
-		usuario.setPrefWidth(140);
-
-		TextField senha = new TextField();
-		senha.setLayoutX(500);
-		senha.setLayoutY(185);
-		senha.setPrefWidth(140);
-		pane.getChildren().addAll(buttonEnter, senha, usuario, cb);
-
+		} else {
+			try {
+				new ErrorLogin().start(new Stage());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 }

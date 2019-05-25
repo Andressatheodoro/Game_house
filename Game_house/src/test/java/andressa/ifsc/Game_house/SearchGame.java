@@ -13,53 +13,75 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class SearchGame extends Application {
 
 	public void start(final Stage window) throws Exception {
-		AnchorPane pane2 = new AnchorPane();
-		pane2.setPrefSize(720, 360); // dimensão tela
 
-		Text texto1 = new Text();
-		texto1.setText("NAME OF THE GAME");
-		texto1.setLayoutX(150);
-		texto1.setLayoutY(140);
+		AnchorPane paneSearchGame = new AnchorPane();
+		paneSearchGame.setPrefSize(732, 425);
+		window.setResizable(false);
+
 		BackgroundImage ImagemTelaBusca = new BackgroundImage(
-				new Image("https://png.pngtree.com/back_origin_pic/00/01/71/a946bf083ce8abe5a1e4507c46bfc028.jpg", 820,
-						370, false, true),
-				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
-				BackgroundSize.DEFAULT);
-		pane2.setBackground(new Background(ImagemTelaBusca));
+				new Image("https://i.imgur.com/WHWKwmI.jpg", 800, 460, false, true), BackgroundRepeat.NO_REPEAT,
+				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+		paneSearchGame.setBackground(new Background(ImagemTelaBusca));
 
-		Button buttonSearch = new Button(String.buttonSearch); // cria botão buscar
-		buttonSearch.setLayoutX(560); // posição horinzontal
-		buttonSearch.setLayoutY(150); // posição vertical
-		buttonSearch.setPrefWidth(60); // tamano
+		Button buttonSearch = new Button(String.buttonSearch);
+		buttonSearch.setLayoutX(460);
+		buttonSearch.setLayoutY(210);
+		buttonSearch.setPrefWidth(90);
+		paneSearchGame.getChildren().addAll(buttonSearch);
 
-		TextField SearchGame = new TextField(); // cria caixa de texto
-		SearchGame.setLayoutX(150); // posição horinzontal
-		SearchGame.setLayoutY(150); // posição vertical
-		SearchGame.setPrefWidth(400); // tamano
+		final TextField opitions = new TextField();
+		opitions.setLayoutX(220);
+		opitions.setLayoutY(170);
+		opitions.setPrefWidth(400);
+		paneSearchGame.getChildren().addAll(opitions);
 
-		pane2.getChildren().addAll(buttonSearch, SearchGame);
+		buttonSearch.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				try {
+					buscagenero();
+				} catch (Exception e) {
 
-		Button buttonExit = new Button(String.buttonExit); // cria botão sair
-		buttonExit.setLayoutX(650); // posiçao horizontal
-		buttonExit.setLayoutY(20); // posição vertical
+					e.printStackTrace();
+				}
+			}
 
+			private void buscagenero() throws Exception {
+				if (opitions.getText().equals("action")) {
+					window.close();
+					new Action().start(new Stage());
+				} else if (opitions.getText().equals("horror")) {
+					window.close();
+					new Horror().start(new Stage());
+				} else if (opitions.getText().equals("adventure")) {
+					window.close();
+					new Adventure().start(new Stage());
+				} else {
+					new ErrorLogin().start(new Stage());
+				}
+			}
+		});
+
+		Button buttonExit = new Button(String.buttonExit);
+		buttonExit.setLayoutX(700);
+		buttonExit.setLayoutY(2);
 		buttonExit.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				try {
 					new Main().start(window);
 				} catch (Exception e) {
-					e.printStackTrace();
+
 				}
 			}
 		});
-		pane2.getChildren().addAll(texto1, buttonExit);
-		Scene scene2 = new Scene(pane2);
+		paneSearchGame.getChildren().add(buttonExit);
+		Scene scene2 = new Scene(paneSearchGame);
 		window.setScene(scene2);
 		window.show();
 	}
